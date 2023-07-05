@@ -145,6 +145,26 @@ class DashboardPage extends StatelessWidget {
                 child: const Text('Go to Manual Triggering'),
               ),
             ),
+
+            const SizedBox(height: 20.0),
+
+            Container(
+              width: 370.0,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ManualPage(),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.green,
+                ),
+                child: const Text('Go to Manual Triggering'),
+              ),
+            ),
           ],
         ),
       ),
