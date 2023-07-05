@@ -5,7 +5,7 @@ class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF0ECE6),
+      backgroundColor: const Color(0xFFF0ECE6),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -14,13 +14,13 @@ class DashboardPage extends StatelessWidget {
           children: [
             IconButton(
               color: Colors.black,
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.pop(context); // Navigate back to the previous page
               },
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0, left: 70),
+            const Padding(
+              padding: EdgeInsets.only(right: 20.0, left: 70),
               child: Text(
                 'Dashboard',
                 style: TextStyle(
@@ -31,7 +31,7 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
             IconButton(
-              icon: Icon(Icons.notifications),
+              icon: const Icon(Icons.notifications),
               color: Colors.black,
               onPressed: () {
                 // Handle notification icon press
@@ -47,11 +47,11 @@ class DashboardPage extends StatelessWidget {
             Container(
               width: 350,
               color: Colors.white,
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 3,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -61,8 +61,8 @@ class DashboardPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(width: 20.0),
-                  Expanded(
+                  const SizedBox(width: 20.0),
+                  const Expanded(
                     flex: 1,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -85,11 +85,11 @@ class DashboardPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Container(
               width: 370,
               color: Colors.white,
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
                   Expanded(
@@ -97,14 +97,14 @@ class DashboardPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Current Status',
                           style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 15.0),
+                        const SizedBox(height: 15.0),
                         Container(
                           width: 100.0,
                           height: 40.0,
@@ -113,7 +113,7 @@ class DashboardPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           alignment: Alignment.center,
-                          child: Text(
+                          child: const Text(
                             'Low Moisture',
                             style: TextStyle(
                               color: Colors.white,
@@ -127,7 +127,7 @@ class DashboardPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Container(
               width: 370.0,
               child: ElevatedButton(
@@ -142,7 +142,7 @@ class DashboardPage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   primary: Colors.green,
                 ),
-                child: Text('Go to Manual Triggering'),
+                child: const Text('Go to Manual Triggering'),
               ),
             ),
           ],
@@ -153,23 +153,23 @@ class DashboardPage extends StatelessWidget {
 
   Widget _buildDataItem(String title, String value, Color color) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(),
       child: Row(
         children: [
           Container(
-            width: 20.0,
+            width: 18.0,
             height: 20.0,
             decoration: BoxDecoration(
               color: color,
               shape: BoxShape.circle,
             ),
           ),
-          SizedBox(width: 8.0),
+          const SizedBox(width: 8.0),
           Text(
             title,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          SizedBox(width: 8.0),
+          const SizedBox(width: 8.0),
           Text(value),
         ],
       ),
