@@ -12,9 +12,11 @@ class MyFormPage extends StatefulWidget {
 
 class _MyFormPageState extends State<MyFormPage> {
   String cropName = '';
+  String? crop = "";
   String fieldSize = '';
   String soilType = '';
   List<String> cropList = [];
+  List<String> soilList = [];
 
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _fieldSizeController = TextEditingController();
@@ -24,24 +26,94 @@ class _MyFormPageState extends State<MyFormPage> {
   void initState() {
     super.initState();
     fetchCropList();
+    fetchSoilList();
   }
 
   Future<void> fetchCropList() async {
-    final snapshot = await FirebaseFirestore.instance.collection('crop').get();
-    final List<String> cropList = snapshot.docs.map((e) => e.id).toList();
-    setState(() {
-      this.cropList = cropList;
-    });
+    List<String> cropNames = [];
+
+    try {
+      // Access the Firestore instance
+      FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+      // Get a reference to the collection
+      CollectionReference collectionRef = firestore.collection('crop');
+
+      // Fetch all documents in the collection
+      QuerySnapshot querySnapshot = await collectionRef.get();
+
+      // Iterate through each document
+      querySnapshot.docs.forEach((DocumentSnapshot doc) {
+        // Get the value of the 'name' field
+        String cropName = doc.get('cropname');
+
+        // Add the cropName to the list
+        cropNames.add(cropName);
+      });
+      setState(() {
+        cropList = cropNames;
+      });
+    } catch (e) {
+      print('Error fetching crop names: $e');
+    }
+  }
+
+  Future<void> fetchSoilList() async {
+    List<String> soilNames = [];
+
+    try {
+      // Access the Firestore instance
+      FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+      // Get a reference to the collection
+      CollectionReference collectionRef = firestore.collection('soil');
+
+      // Fetch all documents in the collection
+      QuerySnapshot querySnapshot = await collectionRef.get();
+
+      // Iterate through each document
+      querySnapshot.docs.forEach((DocumentSnapshot doc) {
+        // Get the value of the 'name' field
+        String soilName = doc.get('soilname');
+
+        // Add the cropName to the list
+        soilNames.add(soilName);
+      });
+      setState(() {
+        soilList = soilNames;
+      });
+    } catch (e) {
+      print('Error fetching soil names: $e');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    List<DropdownMenuItem<String>> items = [
+      for (int i = 0; i < cropList.length; i++)
+        DropdownMenuItem(
+          child: Text(cropList[i]),
+          value: cropList[i],
+        ),
+
+      // Add more items as needed
+    ];
+    List<DropdownMenuItem<String>> items2 = [
+      for (int i = 0; i < soilList.length; i++)
+        DropdownMenuItem(
+          child: Text(soilList[i]),
+          value: soilList[i],
+        ),
+
+      // Add more items as needed
+    ];
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
         title: const Text(
-          'INSERT NAME',
+          'A I S C R',
           style: TextStyle(color: Colors.green),
         ),
         centerTitle: true,
@@ -58,7 +130,6 @@ class _MyFormPageState extends State<MyFormPage> {
         child: Center(
           child: SingleChildScrollView(
             child: Container(
-              height: 370,
               width: 350,
               padding: const EdgeInsets.all(20.0),
               decoration: BoxDecoration(
@@ -106,6 +177,40 @@ class _MyFormPageState extends State<MyFormPage> {
                         fieldSize = value;
                       });
                     },
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  DropdownButtonFormField(
+                    items: items,
+                    onTap: () {
+                      setState(() {
+                        crop = "asdf";
+                      });
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        crop = value;
+                      });
+                    },
+                    dropdownColor: Colors.grey,
+                    decoration:
+                        InputDecoration(labelText: 'Select Crop', filled: true),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  DropdownButtonFormField(
+                    items: items2,
+                    onTap: () {
+                      setState(() {});
+                    },
+                    onChanged: (value) {
+                      setState(() {});
+                    },
+                    dropdownColor: Colors.grey,
+                    decoration:
+                        InputDecoration(labelText: 'Select Soil', filled: true),
                   ),
                   const SizedBox(height: 40.0),
                   ElevatedButton(

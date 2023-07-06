@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ManualPage extends StatelessWidget {
+  const ManualPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +43,7 @@ class ManualPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 50.0),
+          const SizedBox(height: 50.0),
           Container(
             width: double.infinity,
             padding: EdgeInsets.symmetric(horizontal: 145.0),
@@ -74,7 +76,9 @@ class ManualPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 30.0,),
+          SizedBox(
+            height: 30.0,
+          ),
           Container(
             width: 270.0,
             decoration: BoxDecoration(

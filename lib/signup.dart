@@ -87,20 +87,20 @@ class SignUpPage extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       register(context);
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => MyFormPage(),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MyFormPage(),
+                        ),
+                      );
                     },
                     child: const Text(
                       'SUBMIT',
                       style: TextStyle(color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.green,
-                      minimumSize: const Size(double.infinity, 50.0),
+                      backgroundColor: Colors.green,
+                      minimumSize: const Size(double.infinity, 40.0),
                     ),
                   ),
                 ],
