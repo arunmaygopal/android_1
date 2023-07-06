@@ -185,6 +185,14 @@ class CustomModal extends StatelessWidget {
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       log('User: ${user.phoneNumber}');
+      log('User: ${user.uid}');
+      log('User: ${user.email}');
+      log('User: ${user.displayName}');
+      log('User: ${user.photoURL}');
+      log('asldkfjasdlfk: ${nameController.text}');
+      log('asldkfjasdlfk: ${addressController.text}');
+      log('asldkfjasdlfk: ${phoneNumberController.text}');
+
       //add user to firestore
       FirebaseFirestore.instance
           .collection('user')
