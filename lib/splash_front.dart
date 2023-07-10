@@ -42,6 +42,7 @@ class SplashPage extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              //naviagate to signup page
               onPressed: () {
                 Navigator.push(
                   context,
