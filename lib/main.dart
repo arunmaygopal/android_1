@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:my_actual_first_project/dashboard.dart';
 import 'package:my_actual_first_project/manual.dart';
 import 'package:my_actual_first_project/myform.dart';
+import 'package:my_actual_first_project/splash_front.dart';
 import 'package:my_actual_first_project/signup.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         print('User is currently signed out!');
         runApp(MaterialApp(
           title: 'Your App Title',
-          home: SignUpPage(),
+          home: SplashPage(),
         ));
       } else {
         print('User is signed in!');
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
     });
     return MaterialApp(
       title: 'Your App Title',
-      home: SignUpPage(),
+      home: SplashPage(),
     );
   }
 }

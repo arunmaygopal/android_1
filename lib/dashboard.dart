@@ -1,45 +1,28 @@
 import 'package:flutter/material.dart';
 import './manual.dart';
+import './user_profile.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF0ECE6),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              color: Colors.black,
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.pop(context); // Navigate back to the previous page
-              },
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 20.0, left: 70),
-              child: Text(
-                'Dashboard',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            IconButton(
-              icon: const Icon(Icons.notifications),
-              color: Colors.black,
-              onPressed: () {
-                // Handle notification icon press
-              },
-            ),
-          ],
+        title: const Text(
+          'DASHBOARD',
+          style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          color: Colors.black,
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
@@ -191,6 +174,48 @@ class DashboardPage extends StatelessWidget {
           ),
           const SizedBox(width: 8.0),
           Text(value),
+        ],
+      ),
+    );
+  }
+}
+
+class BottomNavigationPage extends StatefulWidget {
+  @override
+  _BottomNavigationPageState createState() => _BottomNavigationPageState();
+}
+
+class _BottomNavigationPageState extends State<BottomNavigationPage> {
+  int _currentIndex = 0;
+
+  final List<Widget> _pages = [
+    DashboardPage(),
+    UserProfilePage(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('App'),
+      ),
+      body: _pages[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (int index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Profile',
+          ),
         ],
       ),
     );

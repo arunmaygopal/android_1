@@ -21,13 +21,13 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF0ECE6),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         title: const Text(
-          'Farmer Sign-Up',
+          'Sign-Up',
           style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20.0),
+              color: Colors.green, fontWeight: FontWeight.bold, fontSize: 23.0),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -83,7 +83,7 @@ class SignUpPage extends StatelessWidget {
                       labelText: 'Phone Number',
                     ),
                   ),
-                  const SizedBox(height: 16.0),
+                  const SizedBox(height: 36.0),
                   ElevatedButton(
                     onPressed: () {
                       register(context);
